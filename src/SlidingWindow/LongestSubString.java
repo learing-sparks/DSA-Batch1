@@ -1,67 +1,46 @@
-package SlidingWindow;
+package com.centurylink;
 
-import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.HashMap;
+import java.util.Scanner;
 
-public class LongestSubString {
-
+public class Testing {
+	static class hello {
+		int va;
+		hello(){
+			va=0;
+		}
+		hello(int va){
+			this.va=va;
+		}
+		@Override
+		public int hashCode() {
+			System.out.println("... working ")
+			return 5;
+		}
+	}
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		HashMap<String, Integer> map = new HashMap<>();
 		
-		String s = "abcabcd";
-		LongestSubString l = new LongestSubString();
-		int res = l.longestSub(s);
-		System.out.println("res : " + res);
-		int optimal_res = l.optimalLongSub(s);
-		System.out.println("optimal_res : " + optimal_res);
-	
+//		// Two strings with the same hashcode (intentionally)
+//		hello key1 = new com.centurylink.testing.hello(2);
+//		hello key2 = new hello(3);
+//		
+////		// Calculate hashcodes
+//		int hash1 = key1.hashCode();
+//		int hash2 = key2.hashCode();
+		
+//		System.out.println("Hashcode of key1: " + hash1);
+//		System.out.println("Hashcode of key2: " + hash2);
+		
+		// Put the key-value pairs in the map
+		map.put("bharath", 100);
+		map.put("rupesh", 200);
+		
+		
+		
+		// Retrieve values
+		System.out.println("Value for key1: " + map.get(key1));
+		System.out.println("Value for key2: " + map.get(key2));
+		System.out.println("Value for key2: " + map);
 	}
-	
-	
-	
-	public int longestSub(String s) {
-		int res = Integer.MIN_VALUE; // 
-		ArrayList<ArrayList<Character>> subarrays = new ArrayList<ArrayList<Character>>(); // n(n+1//2)
-		int n = s.length();
-		for (int i = 0; i < n; i++) {  // n 
-			ArrayList<Character> sub = new ArrayList<Character>(); // n
-			for (int j = i; j < n; j++) { // n
-				sub.add(s.charAt(j));
-			}
-			subarrays.add(sub);
-		}
-		System.out.println("subarrys: " + subarrays);
-		for (ArrayList<Character> arr: subarrays) { // n(n+1)/2
-			int subArrLen = arr.size();
-			HashSet<Character> set = new HashSet<Character>(arr);
-			int setSize = set.size();
-			if (setSize == subArrLen) {
-				res = Math.max(subArrLen, res);
-			}
-		}
-		return res;
-	}
-	
-//	TC: O(n^2)
-//	SC: O(n(n+1)/2 * o(n))
-	
-	public int optimalLongSub(String s) {
-		int res = Integer.MIN_VALUE;
-		HashSet<Character> set = new HashSet<Character>();
-//		int left = 0;
-		int n = s.length();
-		for (int right = 0; right < n; right++) { // n
-			Character ch = s.charAt(right);
-			while(set.contains(ch)) { // Overall iterations it will also be n 
-				set.remove(ch);
-			}
-			set.add(ch);
-			res = Math.max(set.size(), res);
-		}
-		return res;
-	}
-	
-//	TC: o(n)
-// SC: o(1)
-
 }
